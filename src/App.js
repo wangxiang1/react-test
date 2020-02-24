@@ -1,16 +1,27 @@
 import React from "react";
 // import logo from './logo.svg';
 import "./App.css";
-import HocComponent from "./pages/HocComponent";
+// import HocComponent from "./pages/HocComponent";
 // import { Button } from "antd";
 import Login from "./pages/Login";
+import ReduxPage from "./pages/ReduxPage";
+// import ContextPage from "./pages/ContextPage";
+
 
 function App() {
   return (
     <div>
-      <HocComponent />
-      {/* <Button type="primary">test</Button> */}
-      <Login />
+      {/* hoc高阶组件 */}
+      {/* <HocComponent /> */}
+
+      {/* 手写 Form装饰器 */}
+      {/* <Login /> */}
+
+      {/* context */}
+      {/* <ContextPage/> */}
+      
+      {/* redux */}
+      <ReduxPage />
     </div>
   );
 }
