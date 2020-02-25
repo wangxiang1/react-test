@@ -3,7 +3,7 @@ import React from "react";
 import "./App.css";
 // import HocComponent from "./pages/HocComponent";
 // import { Button } from "antd";
-import Login from "./pages/Login";
+// import Login from "./pages/Login";
 import ReduxPage from "./pages/ReduxPage";
 // import ContextPage from "./pages/ContextPage";
 

@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import store from "../store/index";
-import { Button } from "antd";
+import { Button, InputNumber } from "antd";
 
 class ReduxPage extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      value: 0
+    };
   }
 
   componentDidMount() {
@@ -32,12 +34,35 @@ class ReduxPage extends Component {
   handleGetName = () => {
     store.dispatch({type: 'MYNAME'})
   }
+
+  handleAsyncAdd = () => {
+    store.dispatch((dispatch) => {
+      setTimeout(() => {
+        store.dispatch({type: 'ADD'})
+      },1000)
+    })
+  }
+
+  handleInputChange = (value) => {
+    console.log(typeof value);
+    this.setState({value})
+  }
   
+  handleClick = () => {
+    const {value} = this.state;
+
+    store.dispatch({type: 'ADDINPUT', payload: {value}})
+  }
+
   render() {
+    const { value } = this.state;
     // store对象中包括getState方法(获取目前的state)，
     // subscribe方法(指定监听函数，当state变化时调用)，
     // dispatch方法(分发action)。
     // console.log('store:', store, store.getState());
+    // console.log({}.toString());
+    // console.log([].toString());
+    
     const state = store.getState();
 
     return (
@@ -47,9 +72,14 @@ class ReduxPage extends Component {
         <p>{state.userReducer}</p>
         <Button type="primary" onClick={this.handleAdd}>ADD</Button>
         &nbsp;&nbsp;
+        <Button type="primary" onClick={this.handleAsyncAdd}>异步add</Button>
+        &nbsp;&nbsp;
         <Button type="primary" onClick={this.handleSubstract}>SUBSTRACT</Button>
         &nbsp;&nbsp;
         <Button type="primary" onClick={this.handleGetName}>MyName</Button>
+        <hr/>
+        <InputNumber style={{width: 200}} value={value} onChange={this.handleInputChange} />
+        <Button onClick={this.handleClick}>确定</Button>
       </div>
     );
   }

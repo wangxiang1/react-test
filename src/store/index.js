@@ -1,4 +1,8 @@
-import {createStore, combineReducers} from 'redux';
+import {createStore, combineReducers, applyMiddleware} from 'redux';
+// import {createStore, combineReducers} from '../WRedux/index';
+import logger from "redux-logger";
+import thunk from "redux-thunk";
+
 /* 
   1. 需要⼀一个store来存储数据
   2. store⾥的reducer初始化state并定义state修改规则
@@ -11,6 +15,9 @@ function countReducer (state = 0, action) {
       return state + 1;
     case 'SUBSTRACT':
       return state - 1;
+    case 'ADDINPUT': {
+      return state + action.payload.value;
+    }
     default:
       return state;
   }
@@ -26,7 +33,12 @@ function userReducer (state = 'init value', action) {
 }
 
 const store = createStore(
-  combineReducers({countReducer, userReducer})
+  combineReducers({countReducer, userReducer}),
+  applyMiddleware(thunk, logger)
 );
+
+// const store = createStore(
+//   countReducer
+// );
 
 export default store;
