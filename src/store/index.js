@@ -1,6 +1,6 @@
 import {createStore, combineReducers, applyMiddleware} from 'redux';
 // import {createStore, combineReducers} from '../WRedux/index';
-import logger from "redux-logger";
+// import logger from "redux-logger";
 import thunk from "redux-thunk";
 
 /* 
@@ -34,7 +34,7 @@ function userReducer (state = 'init value', action) {
 
 const store = createStore(
   combineReducers({countReducer, userReducer}),
-  applyMiddleware(thunk, logger)
+  applyMiddleware(thunk)
 );
 
 // const store = createStore(

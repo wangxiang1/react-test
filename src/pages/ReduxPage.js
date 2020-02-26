@@ -2,6 +2,14 @@ import React, { Component } from "react";
 import store from "../store/index";
 import { Button, InputNumber } from "antd";
 
+// function test(fn, age) {
+//   console.log('age11=========:')
+//   return function (...args) {
+//     console.log('age:', age)
+//     return fn(...args);
+//   }
+// }
+
 class ReduxPage extends Component {
   constructor(props) {
     super(props);
@@ -36,6 +44,17 @@ class ReduxPage extends Component {
   }
 
   handleAsyncAdd = () => {
+    // const a = 'wang';
+
+    // const addObj = {add: () => ({type: 'ADD'})}
+
+    // const aa = test((a, b) => {
+    //   console.log('test================',a, b)
+    //   return 'wangxiang';
+    // }, 100);
+    // console.log(aa);
+
+    // aa(1,2)
     store.dispatch((dispatch) => {
       setTimeout(() => {
         store.dispatch({type: 'ADD'})
@@ -50,7 +69,7 @@ class ReduxPage extends Component {
   
   handleClick = () => {
     const {value} = this.state;
-
+    
     store.dispatch({type: 'ADDINPUT', payload: {value}})
   }
 
