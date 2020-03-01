@@ -41,7 +41,7 @@ const connect = (
     }
 
     update(){
-      console.log(this.context);
+      console.log('this.context', this.context);
       // 此时的this.context就是store，因为Provider传递了value是this.props.store
       const { getState, dispatch } = this.context;
       const stateProps = mapStateToProps(getState());

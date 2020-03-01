@@ -5,8 +5,9 @@ import "./App.css";
 // import { Button } from "antd";
 // import Login from "./pages/Login";
 // import ReduxPage from "./pages/ReduxPage";
-import ReactReduxPage from "./pages/ReactReduxPage";
 // import ContextPage from "./pages/ContextPage";
+// import ReactReduxPage from "./pages/ReactReduxPage";
+import RouterPage from "./pages/RouterPage";
 
 
 function App() {
@@ -25,7 +26,10 @@ function App() {
       {/* <ReduxPage /> */}
 
       {/* react-redux */}
-      <ReactReduxPage/>
+      {/* <ReactReduxPage/> */}
+
+      {/* react-router */}
+      <RouterPage />
     </div>
   );
 }

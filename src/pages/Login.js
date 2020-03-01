@@ -3,16 +3,25 @@
  * @Desc:  Form测试
  * @Date: 2020-02-22 15:53:55 
  * @Last Modified by: wangxiang
- * @Last Modified time: 2020-02-22 18:40:22
+ * @Last Modified time: 2020-03-01 00:34:09
  */
 import React, { Component } from 'react';
 import { Form, Input, Button } from "antd";
-import myFormCreate from '../components/MyForm';
+import { connect } from '../MReactRedux/index';
+import {Redirect} from 'react-router-dom';
+// import myFormCreate from '../components/MyForm';
 
 const FormItem = Form.Item;
 
-// @Form.create()
-@myFormCreate
+export default connect(
+  state => ({isLogin: state.loginReducer}),
+  {
+     login: () => ({ type: "LOGIN" }), 
+     logout: () => ({ type: "LOGOUT" }) 
+  }
+)(
+@Form.create()
+// @myFormCreate
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -21,7 +30,7 @@ class Login extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { form: { validateFields, getFieldValue, getFieldsValue } } = this.props;
+    const { form: { validateFields, getFieldValue, getFieldsValue }, login } = this.props;
     console.log('getFieldsValue:', getFieldsValue());
     console.log('getFieldValue name:', getFieldValue('name1'));
 
@@ -29,48 +38,56 @@ class Login extends Component {
       console.log('validateFields:',err, values);
       if (!err) {
         console.log(values);
+        login();
       }
     });
   }
 
   render() {
-    const {form: {getFieldDecorator}} = this.props;
+    const {form: {getFieldDecorator}, isLogin, location} = this.props;
+    console.log('login',this.props);
+
+    const {redirect = "/"} = location.state || {};
     
-    return (
-      <div style={{width: 300, margin: 'auto'}}>
-        <Form labelCol={{span: 4}} wrapperCol={{span: 16}} onSubmit={this.handleSubmit}>
-          <FormItem label="姓名">
-            {getFieldDecorator("name1", {
-              rules: [
-                { required: true, message: "name required 测试" }
-              ]
-            })(
-            <Input placeholder="please input name" />
-            )}
-          </FormItem>
-
-          <FormItem label="密码">
-            {getFieldDecorator("password1", {
-              rules: [
-                { required: true, message: "password required 测试" }
-              ]
-            })(
-            <Input placeholder="please input password" />
-            )}
-          </FormItem>
-
-          <FormItem>
-            <Button
-              htmlType="submit"
-              type="primary"
-            >
-              确定
-            </Button>
-          </FormItem>
-        </Form>
-      </div>
-    );
+    if (isLogin) {
+      return <Redirect to={{pathname: redirect}} />
+    }else{
+      return (
+        <div style={{width: 300, margin: 'auto'}}>
+          <Form labelCol={{span: 4}} wrapperCol={{span: 16}} onSubmit={this.handleSubmit}>
+            <FormItem label="姓名">
+              {getFieldDecorator("name1", {
+                rules: [
+                  { required: true, message: "name required 测试" }
+                ]
+              })(
+              <Input placeholder="please input name" />
+              )}
+            </FormItem>
+  
+            <FormItem label="密码">
+              {getFieldDecorator("password1", {
+                rules: [
+                  { required: true, message: "password required 测试" }
+                ]
+              })(
+              <Input placeholder="please input password" />
+              )}
+            </FormItem>
+  
+            <FormItem>
+              <Button
+                htmlType="submit"
+                type="primary"
+              >
+                确定
+              </Button>
+            </FormItem>
+          </Form>
+        </div>
+      );
+    }
   }
 }
 
-export default Login;
+)

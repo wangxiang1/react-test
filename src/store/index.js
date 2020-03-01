@@ -32,8 +32,18 @@ function userReducer (state = 'init value', action) {
   }
 }
 
+function loginReducer(state = false, action) {
+  switch (action.type) {
+    case 'LOGIN':
+      return true;
+    case 'LOGOUT':
+      return false;
+    default:
+      return state;
+  }
+}
 const store = createStore(
-  combineReducers({countReducer, userReducer}),
+  combineReducers({countReducer, userReducer, loginReducer}),
   applyMiddleware(thunk)
 );
 

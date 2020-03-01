@@ -8,7 +8,7 @@ import { bindActionCreators } from "redux";
 export default connect(
   // mapStateToProps 将state映射到props上
   state => ({value: state}),
-  // mapDispatchToProps Object/Function 如果不定义 默认把props注⼊入组件
+  // mapDispatchToProps Object/Function 如果不定义 默认把props注入组件
   // 如果是对象的话，原版的dispatch就没有被注入了
   dispatch => {
     let res = { add: () => ({ type: "ADD" }) };
