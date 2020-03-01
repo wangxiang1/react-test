@@ -7,7 +7,7 @@
  */
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
-import { connect } from '../MReactRedux/index';
+import { connect } from '../WReactRedux/index';
 import PrivateRoute from '../PrivateRoute/index';
 import HomePage from './HomePage';
 import UserManagePage from './UserManagePage';

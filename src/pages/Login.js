@@ -7,7 +7,7 @@
  */
 import React, { Component } from 'react';
 import { Form, Input, Button } from "antd";
-import { connect } from '../MReactRedux/index';
+import { connect } from '../WReactRedux/index';
 import {Redirect} from 'react-router-dom';
 // import myFormCreate from '../components/MyForm';
 

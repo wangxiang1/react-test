@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import store from "../store/index";
 import { Button } from "antd";
-import { connect } from "../MReactRedux";
+import { connect } from "../WReactRedux";
 import { bindActionCreators } from "redux";
 
 // connect 帮助子组件和store连接，高阶组件，返回一个新组件
