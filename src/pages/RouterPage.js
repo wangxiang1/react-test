@@ -3,7 +3,7 @@
  * @Desc:  react-router page
  * @Date: 2020-02-29 23:16:50 
  * @Last Modified by: wangxiang
- * @Last Modified time: 2020-03-01 00:35:41
+ * @Last Modified time: 2020-03-01 21:21:19
  */
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
@@ -34,6 +34,7 @@ export default connect(
               <PrivateRoute isLogin={isLogin} exact path="/" component={HomePage} />
               <PrivateRoute isLogin={isLogin} path="/user" component={UserManagePage} />
               <Route path="/login" component={Login} />
+              <Route render={() => <h1>404</h1>} />
               <PrivateRoute isLogin={isLogin} render={() => <h1>404</h1>} />
             </Switch>
           </Router>
