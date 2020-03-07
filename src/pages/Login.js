@@ -3,12 +3,12 @@
  * @Desc:  Form测试
  * @Date: 2020-02-22 15:53:55 
  * @Last Modified by: wangxiang
- * @Last Modified time: 2020-03-01 00:34:09
+ * @Last Modified time: 2020-03-04 18:12:00
  */
 import React, { Component } from 'react';
 import { Form, Input, Button } from "antd";
 import { connect } from '../WReactRedux/index';
-import {Redirect} from 'react-router-dom';
+// import {Redirect} from 'react-router-dom';
 // import myFormCreate from '../components/MyForm';
 
 const FormItem = Form.Item;
@@ -44,13 +44,15 @@ class Login extends Component {
   }
 
   render() {
-    const {form: {getFieldDecorator}, isLogin, location} = this.props;
+    // const {form: {getFieldDecorator}, isLogin, location} = this.props;
+    const {form: {getFieldDecorator}, isLogin = false} = this.props;
     console.log('login',this.props);
 
-    const {redirect = "/"} = location.state || {};
+    // const {redirect = "/"} = location.state || {};
     
     if (isLogin) {
-      return <Redirect to={{pathname: redirect}} />
+     /*  return <Redirect to={{pathname: redirect}} /> */
+      return <div>11</div>
     }else{
       return (
         <div style={{width: 300, margin: 'auto'}}>
