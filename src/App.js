@@ -4,7 +4,9 @@ import "./App.css";
 // import HocComponent from "./pages/HocComponent";
 // import { Button } from "antd";
 // import Login from "./pages/Login";
-import ReduxPage from "./pages/ReduxPage";
+// import ReduxPage from "./pages/ReduxPage";
+// import Suggestion from "./pages/info";
+import TerminalCom from "./pages/terminal";
 // import ContextPage from "./pages/ContextPage";
 
 
@@ -21,7 +23,10 @@ function App() {
       {/* <ContextPage/> */}
       
       {/* redux */}
-      <ReduxPage />
+      {/* <ReduxPage /> */}
+      {/* <Suggestion/> */}
+
+      <TerminalCom />
     </div>
   );
 }
